@@ -286,14 +286,57 @@ This project is open-sourced software licensed under the [MIT license](https://o
 
 ## Live Deployment
 
-**Live URL**: [To be deployed on Laravel Cloud or hosting platform]
+**Deployment Platform**: Laravel Cloud  
+**Repository**: `https://github.com/barbiefortes04-jpg/munchkly.git`
 
-**Deployment Features:**
-- Production-ready configuration
-- SSL certificate
-- Database optimization
-- Caching enabled
-- Error monitoring
+### Laravel Cloud Deployment Steps
+
+1. **Connect Repository**
+   ```bash
+   # Repository is ready at:
+   https://github.com/barbiefortes04-jpg/munchkly.git
+   ```
+
+2. **Environment Configuration**
+   - Laravel Cloud will use the production environment variables
+   - Database will be automatically provisioned
+   - SSL certificate will be automatically configured
+
+3. **Build Process**
+   ```bash
+   # Automatic build commands:
+   composer install --optimize-autoloader --no-dev
+   npm ci && npm run build
+   php artisan migrate --force
+   php artisan config:cache
+   php artisan route:cache
+   php artisan view:cache
+   ```
+
+4. **Storage Setup**
+   ```bash
+   # Automatic storage link creation:
+   php artisan storage:link
+   ```
+
+### Deployment Features
+- ✅ Production-ready Laravel configuration
+- ✅ Optimized asset building with Vite
+- ✅ Database migrations included
+- ✅ SSL certificate enabled
+- ✅ CDN integration
+- ✅ Automatic backups
+- ✅ Performance monitoring
+- ✅ Error tracking
+
+### Post-Deployment Checklist
+- [ ] Verify database connection
+- [ ] Test user registration/login
+- [ ] Check tweet creation functionality
+- [ ] Verify file uploads work
+- [ ] Test theme switching
+- [ ] Confirm responsive design
+- [ ] Validate SSL certificate
 
 ## Support
 
