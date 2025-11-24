@@ -1,0 +1,36 @@
+# Laravel Cloud Deployment Configuration
+# This file ensures proper deployment on Laravel Cloud infrastructure
+
+# Build Configuration
+BUILD_COMMAND="bash build.sh"
+BUILD_TIMEOUT=300
+
+# Environment Configuration  
+APP_ENV=production
+APP_DEBUG=false
+LOG_CHANNEL=stderr
+LOG_LEVEL=info
+
+# Database Configuration (will be set by Laravel Cloud)
+DB_CONNECTION=mysql
+
+# Cache Configuration for Production
+CACHE_DRIVER=redis
+SESSION_DRIVER=redis
+QUEUE_CONNECTION=redis
+
+# File Storage
+FILESYSTEM_DISK=s3
+
+# Deployment Flags
+COMPOSER_ALLOW_SUPERUSER=1
+COMPOSER_NO_DEV=1
+COMPOSER_OPTIMIZE_AUTOLOADER=1
+COMPOSER_CLASSMAP_AUTHORITATIVE=1
+
+# Build Optimization
+NPM_CONFIG_PRODUCTION=true
+NODE_ENV=production
+
+# Laravel Optimization
+LARAVEL_OPTIMIZE=true
