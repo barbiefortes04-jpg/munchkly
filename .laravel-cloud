@@ -1,15 +1,26 @@
-# Laravel Cloud Deployment Configuration
-# This file ensures proper deployment on Laravel Cloud infrastructure
+# Laravel Cloud Deployment Configuration  
+# Enhanced configuration for reliable deployments with error handling
 
-# Build Configuration
+# Build Configuration with extended timeout and memory
 BUILD_COMMAND="bash build.sh"
-BUILD_TIMEOUT=300
+BUILD_TIMEOUT=900
+BUILD_MEMORY_LIMIT=2048
 
-# Environment Configuration  
+# Composer Configuration for reliable package installation
+COMPOSER_MEMORY_LIMIT=-1
+COMPOSER_PROCESS_TIMEOUT=0  
+COMPOSER_ALLOW_SUPERUSER=1
+COMPOSER_NO_DEV=1
+COMPOSER_OPTIMIZE_AUTOLOADER=1
+COMPOSER_CLASSMAP_AUTHORITATIVE=1
+COMPOSER_DISCARD_CHANGES=true
+COMPOSER_NO_SCRIPTS=false
+
+# Environment Configuration
 APP_ENV=production
 APP_DEBUG=false
 LOG_CHANNEL=stderr
-LOG_LEVEL=info
+LOG_LEVEL=error
 
 # Database Configuration (will be set by Laravel Cloud)
 DB_CONNECTION=mysql
@@ -19,18 +30,19 @@ CACHE_DRIVER=redis
 SESSION_DRIVER=redis
 QUEUE_CONNECTION=redis
 
-# File Storage
+# File Storage  
 FILESYSTEM_DISK=s3
 
-# Deployment Flags
-COMPOSER_ALLOW_SUPERUSER=1
-COMPOSER_NO_DEV=1
-COMPOSER_OPTIMIZE_AUTOLOADER=1
-COMPOSER_CLASSMAP_AUTHORITATIVE=1
-
 # Build Optimization
-NPM_CONFIG_PRODUCTION=true
 NODE_ENV=production
+NPM_CONFIG_PRODUCTION=true
 
 # Laravel Optimization
 LARAVEL_OPTIMIZE=true
+CONFIG_CACHE_ENABLED=false
+ROUTE_CACHE_ENABLED=false
+VIEW_CACHE_ENABLED=false
+
+# Error Handling
+IGNORE_PLATFORM_REQS=false
+STRICT_DEPENDENCY_CHECKING=true

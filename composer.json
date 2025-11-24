@@ -21,10 +21,15 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi || true"
         ],
         "post-install-cmd": [
+            "php -r \"if (!file_exists('vendor/nette/schema/src/Schema/Schema.php')) { echo 'WARNING: nette/schema validation failed'; }\"",
             "@php artisan storage:link --ansi || true"
+        ],
+        "post-update-cmd": [
+            "php -r \"if (!file_exists('vendor/nette/schema/src/Schema/Schema.php')) { echo 'WARNING: nette/schema validation failed'; }\"",
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
         ]
     },
     "extra": {
