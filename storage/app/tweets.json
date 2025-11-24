@@ -1,0 +1,95 @@
+[
+    {
+        "id": 1,
+        "content": "aligator",
+        "user": {
+            "id": 1,
+            "name": "ght",
+            "email": "barbiefortes04@gmail.com"
+        },
+        "likes": [],
+        "created_at": "2025-11-20T12:23:14.033604Z",
+        "updated_at": "2025-11-20T12:23:14.033788Z"
+    },
+    {
+        "id": 2,
+        "content": "aninieee",
+        "user": {
+            "id": 1,
+            "name": "ght",
+            "email": "barbiefortes04@gmail.com"
+        },
+        "likes": [],
+        "created_at": "2025-11-20T12:53:48.932004Z",
+        "updated_at": "2025-11-20T12:53:48.932180Z"
+    },
+    {
+        "id": 3,
+        "content": "aniee",
+        "user": {
+            "id": 2,
+            "name": "j he",
+            "email": "nettiemabangis@gmail.com"
+        },
+        "likes": [
+            {
+                "user_id": 2,
+                "created_at": "2025-11-20T13:49:27.095379Z"
+            }
+        ],
+        "created_at": "2025-11-20T12:54:31.760501Z",
+        "updated_at": "2025-11-20T13:52:46.754168Z",
+        "is_edited": true
+    },
+    {
+        "id": 4,
+        "content": "haleluya",
+        "user": {
+            "id": 4,
+            "name": "j he",
+            "email": "nettiemabangisa@gmail.com"
+        },
+        "likes": [
+            {
+                "user_id": 4,
+                "created_at": "2025-11-22T17:59:32.349026Z"
+            }
+        ],
+        "created_at": "2025-11-22T17:58:20.242089Z",
+        "updated_at": "2025-11-22T17:58:20.242241Z"
+    },
+    {
+        "id": 5,
+        "content": "wow",
+        "user": {
+            "id": 4,
+            "name": "j he",
+            "email": "nettiemabangisa@gmail.com"
+        },
+        "shared_tweet_id": "3",
+        "shared_tweet": {
+            "id": 3,
+            "content": "aniee",
+            "user": {
+                "id": 2,
+                "name": "j he",
+                "email": "nettiemabangis@gmail.com"
+            },
+            "likes": [
+                {
+                    "user_id": 2,
+                    "created_at": "2025-11-20T13:49:27.095379Z"
+                }
+            ],
+            "created_at": "2025-11-20T12:54:31.760501Z",
+            "updated_at": "2025-11-20T13:52:46.754168Z",
+            "is_edited": true
+        },
+        "photos": [],
+        "video": null,
+        "likes": [],
+        "is_share": true,
+        "created_at": "2025-11-22T18:39:47.267471Z",
+        "updated_at": "2025-11-22T18:39:47.267728Z"
+    }
+]

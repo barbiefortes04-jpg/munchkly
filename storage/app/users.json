@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "ght",
+        "email": "barbiefortes04@gmail.com",
+        "password": "$2y$12$QlxIjeEBAKlCeMoBNSK3I.GImhwQOgVI9zSrciiiHYHkgja3elI3G",
+        "created_at": "2025-11-20T12:20:06.877063Z"
+    },
+    {
+        "id": 2,
+        "name": "j he",
+        "email": "nettiemabangis@gmail.com",
+        "password": "$2y$12$drj2wfqevQQw6MBKAruExermw8rMZC.WaOfubNLKv\/t5QH31daYvS",
+        "created_at": "2025-11-20T12:54:24.011314Z"
+    },
+    {
+        "id": 3,
+        "name": "ijkuhu",
+        "email": "barbiefortes@gmail.com",
+        "password": "$2y$12$9Glle8ORg3JtZK.xjyYhWeo3t9b7VodA\/VaorrISX0Fn.jUMngK4K",
+        "created_at": "2025-11-20T17:26:06.753740Z"
+    },
+    {
+        "id": 4,
+        "name": "j he",
+        "email": "nettiemabangisa@gmail.com",
+        "password": "$2y$12$h9ZUoxWaaeVzsxc4gnR0l.ac9B8v34CIs5sJuFxN4\/JVA4OXOX9Ry",
+        "created_at": "2025-11-22T17:57:46.179901Z"
+    }
+]
