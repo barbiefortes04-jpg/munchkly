@@ -56,3 +56,21 @@ Route::post('/profile/upload-cover', [UserController::class, 'uploadCoverPhoto']
 // Follow routes
 Route::post('/follow/{id}', [FollowController::class, 'toggle'])->name('follow.toggle');
 Route::post('/close-friend/{id}', [UserController::class, 'toggleCloseFriend'])->name('close-friend.toggle');
+
+// Temporary debug route to view live database data
+Route::get('/debug-db', function () {
+    if (!session('user_id')) {
+        return 'Access denied. Please login first.';
+    }
+    
+    $data = [
+        'users_count' => \App\Models\User::count(),
+        'tweets_count' => \App\Models\Tweet::count(),
+        'likes_count' => \App\Models\Like::count(),
+        'follows_count' => \App\Models\Follow::count(),
+        'latest_users' => \App\Models\User::latest()->take(5)->get(['id', 'name', 'email', 'created_at']),
+        'latest_tweets' => \App\Models\Tweet::latest()->take(5)->with('user')->get(['id', 'content', 'user_id', 'created_at']),
+    ];
+    
+    return '<pre>' . json_encode($data, JSON_PRETTY_PRINT) . '</pre>';
+})->name('debug.db');
