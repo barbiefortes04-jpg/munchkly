@@ -49,37 +49,102 @@
         footer {
             margin-top: auto;
         }
+        
+        /* Dark theme variables and styles */
+        :root {
+            --bg-primary: #f9fafb;
+            --bg-secondary: #ffffff;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --accent-color: #3b82f6;
+        }
+        
+        .dark {
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border-color: #374151;
+            --accent-color: #60a5fa;
+        }
+        
+        .theme-transition {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        /* Theme toggle button styles */
+        .theme-toggle {
+            position: relative;
+            width: 50px;
+            height: 25px;
+            background: var(--border-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+        
+        .theme-toggle.dark {
+            background: #4b5563;
+        }
+        
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 21px;
+            height: 21px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            z-index: 11;
+        }
+        
+        .theme-toggle.dark::before {
+            transform: translateX(-25px);
+            background: #fbbf24;
+        }
     </style>
 </head>
-<body class="font-sans antialiased bg-gray-50">
+<body class="font-sans antialiased theme-transition" style="background-color: var(--bg-primary); color: var(--text-primary);">
     <div class="page-container">
         <!-- Navigation Bar -->
-        <nav class="bg-white shadow-sm border-b border-gray-200">
+        <nav class="shadow-sm border-b theme-transition" style="background-color: var(--bg-secondary); border-color: var(--border-color);">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
                     <!-- Logo -->
                     <div class="flex items-center">
                         <a href="<?php echo e(route('home')); ?>" class="flex items-center">
-                            <i class="fas fa-kiwi-bird text-blue-500 text-2xl mr-2"></i>
-                            <span class="text-xl font-bold text-gray-900">Munchkly</span>
+                            <i class="fas fa-kiwi-bird text-2xl mr-2" style="color: var(--accent-color);"></i>
+                            <span class="text-xl font-bold" style="color: var(--text-primary);">Munchkly</span>
                         </a>
                     </div>
 
                     <!-- Navigation Links -->
                     <div class="flex items-center space-x-4">
+                        <!-- Theme Toggle -->
+                        <div class="flex items-center mr-2">
+                            <span class="text-xs mr-2" style="color: var(--text-secondary);">Dark</span>
+                            <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()"></div>
+                            <span class="text-xs ml-2" style="color: var(--text-secondary);">Light</span>
+                        </div>
+                        
                         <?php if($isAuth && $authUser): ?>
-                            <a href="<?php echo e(route('profile.show', $authUser->id)); ?>" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+                            <a href="<?php echo e(route('profile.show', $authUser->id)); ?>" class="px-3 py-2 rounded-md text-sm font-medium theme-transition" style="color: var(--text-secondary);" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
                                 <i class="fas fa-user mr-1"></i>Profile
                             </a>
                             <form method="POST" action="<?php echo e(route('logout')); ?>" class="inline">
                                 <?php echo csrf_field(); ?>
-                                <button type="submit" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+                                <button type="submit" class="px-3 py-2 rounded-md text-sm font-medium theme-transition" style="color: var(--text-secondary);" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
                                     <i class="fas fa-sign-out-alt mr-1"></i>Logout
                                 </button>
                             </form>
-                            <span class="text-sm text-gray-500">Hi, <?php echo e($authUser->name); ?>!</span>
+                            <span class="text-sm" style="color: var(--text-secondary);">Hi, <?php echo e($authUser->name); ?>!</span>
                         <?php else: ?>
-                            <a href="<?php echo e(route('login')); ?>" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+                            <a href="<?php echo e(route('login')); ?>" class="px-3 py-2 rounded-md text-sm font-medium theme-transition" style="color: var(--text-secondary);" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
                                 <i class="fas fa-sign-in-alt mr-1"></i>Login
                             </a>
                         <?php endif; ?>
@@ -217,6 +282,40 @@
                 counter.className = 'char-counter text-gray-500 text-sm';
             }
         }
+
+        // Dark Theme Toggle Functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const toggle = document.getElementById('themeToggle');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                toggle.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                toggle.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const html = document.documentElement;
+            const toggle = document.getElementById('themeToggle');
+            
+            // Determine if we should use dark mode
+            const shouldUseDark = savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            
+            if (shouldUseDark) {
+                html.classList.add('dark');
+                if (toggle) toggle.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+                if (toggle) toggle.classList.remove('dark');
+            }
+        });
 
         // Auto-remove flash messages after 5 seconds
         setTimeout(() => {

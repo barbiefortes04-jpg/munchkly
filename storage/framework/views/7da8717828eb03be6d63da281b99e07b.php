@@ -77,6 +77,25 @@
                                         <?php if($tweet->is_edited): ?>
                                             <span class="text-gray-400 text-xs">(edited)</span>
                                         <?php endif; ?>
+                                        
+                                        <!-- Privacy Indicator -->
+                                        <?php if(isset($tweet->privacy) && $tweet->privacy !== 'public'): ?>
+                                            <?php if($tweet->privacy === 'followers'): ?>
+                                                <span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs bg-blue-100 text-blue-800">
+                                                    <svg class="w-2.5 h-2.5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                                    </svg>
+                                                    Followers
+                                                </span>
+                                            <?php elseif($tweet->privacy === 'close_friends'): ?>
+                                                <span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs bg-green-100 text-green-800">
+                                                    <svg class="w-2.5 h-2.5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                    </svg>
+                                                    Close Friends
+                                                </span>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
                                     </div>
 
                                     <!-- Tweet Content -->

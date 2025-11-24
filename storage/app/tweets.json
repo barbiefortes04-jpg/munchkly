@@ -91,5 +91,22 @@
         "is_share": true,
         "created_at": "2025-11-22T18:39:47.267471Z",
         "updated_at": "2025-11-22T18:39:47.267728Z"
+    },
+    {
+        "id": 6,
+        "content": "white angel",
+        "user": {
+            "id": 4,
+            "name": "j he",
+            "email": "nettiemabangisa@gmail.com"
+        },
+        "photos": [
+            "tweet_6_photo_1_1763987802.jpg"
+        ],
+        "video": null,
+        "privacy": "public",
+        "likes": [],
+        "created_at": "2025-11-24T12:36:42.931549Z",
+        "updated_at": "2025-11-24T12:36:42.931975Z"
     }
 ]

@@ -1,10 +1,10 @@
-# Munchkly 🐦
+# Munchkly
 
 A modern Twitter-like social media application built with Laravel and Tailwind CSS.
 
 ![Munchkly Logo](https://via.placeholder.com/200x60/3B82F6/FFFFFF?text=Munchkly)
 
-## 📖 Project Description
+## Project Description
 
 Munchkly is a feature-rich social media platform that allows users to share their thoughts, interact with others, and build communities through short-form posts (tweets). Inspired by Twitter's simplicity and engagement model, Munchkly provides a clean, responsive interface for seamless social interaction.
 
@@ -14,53 +14,53 @@ Munchkly is a feature-rich social media platform that allows users to share thei
 - **User Expression**: Allow personal expression through customizable profiles
 - **Community Building**: Foster connections through shared interests and conversations
 
-## ✨ Features Implemented
+## Features Implemented
 
-### 🔐 User Authentication
-- ✅ **User Registration**: Secure account creation with name, email, and password
-- ✅ **User Login/Logout**: Session-based authentication with "Remember Me" option
-- ✅ **Protected Routes**: Access control for authenticated users only
-- ✅ **Password Security**: Bcrypt hashing and validation
+### User Authentication
+- User Registration: Secure account creation with name, email, and password
+- User Login/Logout: Session-based authentication with "Remember Me" option
+- Protected Routes: Access control for authenticated users only
+- Password Security: Bcrypt hashing and validation
 
-### 🐦 Tweet Management
-- ✅ **Create Tweets**: Post thoughts with 280-character limit
-- ✅ **Real-time Character Counter**: Visual feedback while typing
-- ✅ **Display All Tweets**: Homepage feed with newest posts first
-- ✅ **Edit Tweets**: Update own tweets with "edited" indicator
-- ✅ **Delete Tweets**: Remove own tweets with confirmation prompt
-- ✅ **Timestamp Display**: Show creation time and "time ago" format
+### Tweet Management
+- Create Tweets: Post thoughts with 280-character limit
+- Real-time Character Counter: Visual feedback while typing
+- Display All Tweets: Homepage feed with newest posts first
+- Edit Tweets: Update own tweets with "edited" indicator
+- Delete Tweets: Remove own tweets with confirmation prompt
+- Timestamp Display: Show creation time and "time ago" format
 
-### ❤️ Like System
-- ✅ **Like/Unlike Tweets**: Toggle likes on any tweet (including own)
-- ✅ **Like Counter**: Real-time display of total likes
-- ✅ **Visual Indicators**: Heart icon changes when liked
-- ✅ **Unique Constraint**: One like per user per tweet
-- ✅ **Instant Feedback**: Immediate UI updates
+### Like System
+- Like/Unlike Tweets: Toggle likes on any tweet (including own)
+- Like Counter: Real-time display of total likes
+- Visual Indicators: Heart icon changes when liked
+- Unique Constraint: One like per user per tweet
+- Instant Feedback: Immediate UI updates
 
-### 👤 User Profile
-- ✅ **Profile Pages**: Dedicated user profile views
-- ✅ **User Information**: Display name and join date
-- ✅ **User Tweets**: List all tweets by specific user
-- ✅ **Statistics**: Total tweet count and likes received
-- ✅ **Avatar System**: Gradient-based profile pictures
+### User Profile
+- Profile Pages: Dedicated user profile views
+- User Information: Display name and join date
+- User Tweets: List all tweets by specific user
+- Statistics: Total tweet count and likes received
+- Avatar System: Gradient-based profile pictures
 
-### 🎨 UI/UX Design
-- ✅ **Responsive Design**: Perfect on mobile, tablet, and desktop
-- ✅ **Tailwind CSS**: Modern, utility-first styling
-- ✅ **Clean Interface**: Intuitive navigation and layout
-- ✅ **Consistent Styling**: Unified design language throughout
-- ✅ **Accessibility**: Proper contrast and keyboard navigation
-- ✅ **Loading States**: Visual feedback for user actions
+### UI/UX Design
+- Responsive Design: Perfect on mobile, tablet, and desktop
+- Tailwind CSS: Modern, utility-first styling
+- Clean Interface: Intuitive navigation and layout
+- Consistent Styling: Unified design language throughout
+- Accessibility: Proper contrast and keyboard navigation
+- Loading States: Visual feedback for user actions
 
-### ⚙️ Technical Implementation
-- ✅ **Laravel Framework**: MVC architecture with best practices
-- ✅ **Database Design**: Proper migrations, relationships, and constraints
-- ✅ **Eloquent Models**: Rich model relationships and methods
-- ✅ **Form Validation**: Client-side and server-side validation
-- ✅ **Security**: CSRF protection, SQL injection prevention
-- ✅ **Code Organization**: Clean, maintainable code structure
+### Technical Implementation
+- Laravel Framework: MVC architecture with best practices
+- Database Design: Proper migrations, relationships, and constraints
+- Eloquent Models: Rich model relationships and methods
+- Form Validation: Client-side and server-side validation
+- Security: CSRF protection, SQL injection prevention
+- Code Organization: Clean, maintainable code structure
 
-## 🚀 Installation Instructions
+## Installation Instructions
 
 ### Prerequisites
 - PHP 8.1 or higher
@@ -105,7 +105,7 @@ DB_USERNAME=your_username
 DB_PASSWORD=your_password
 ```
 
-## 📊 Database Setup Steps
+## Database Setup Steps
 
 ### Step 1: Create Database
 ```sql
@@ -156,7 +156,7 @@ php artisan db:seed
 - Unique Index: (user_id, tweet_id)
 ```
 
-## 📱 Screenshots
+## Screenshots
 
 ### Homepage - Feed View
 *Clean, responsive design showing all tweets with like buttons and user interactions*
@@ -173,7 +173,7 @@ php artisan db:seed
 ### Mobile Responsive
 *Perfectly optimized for all device sizes*
 
-## 🏃‍♂️ Running the Application
+## Running the Application
 
 ### Development Server
 ```bash
@@ -188,7 +188,7 @@ Visit: `http://localhost:8000`
 4. Run `php artisan route:cache`
 5. Run `php artisan view:cache`
 
-## 🧪 Testing
+## Testing
 
 ### Sample User Accounts (After Seeding)
 - **john@munchkly.test** / password
@@ -207,7 +207,7 @@ Visit: `http://localhost:8000`
 - [ ] Profile page display
 - [ ] Responsive design on multiple devices
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 munchkly/
@@ -236,7 +236,7 @@ munchkly/
 └── README.md
 ```
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 ### Backend
 - **Laravel 10** - PHP Framework
@@ -256,7 +256,7 @@ munchkly/
 - **Git** - Version control
 - **VS Code** - Code editor
 
-## 🤖 Credits
+## Credits
 
 ### AI Tools Used
 This project was developed with assistance from **GitHub Copilot (Claude Sonnet 4)**:
@@ -280,11 +280,11 @@ This project was developed with assistance from **GitHub Copilot (Claude Sonnet 
 - **Developer**: [Jherilyn Fortes] - Primary developer and project architect
 - **AI Assistant**: GitHub Copilot - Code generation and development assistance
 
-## 📝 License
+## License
 
 This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## 🌐 Live Deployment
+## Live Deployment
 
 **Live URL**: [To be deployed on Laravel Cloud or hosting platform]
 
@@ -295,10 +295,10 @@ This project is open-sourced software licensed under the [MIT license](https://o
 - Caching enabled
 - Error monitoring
 
-## 📞 Support
+## Support
 
 For support, email support@munchkly.test or create an issue in the GitHub repository.
 
 ---
 
-**Built with ❤️ using Laravel, Tailwind CSS, and GitHub Copilot**
+**Built with Laravel, Tailwind CSS, and GitHub Copilot**

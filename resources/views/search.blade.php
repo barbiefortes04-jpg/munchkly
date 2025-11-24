@@ -4,16 +4,16 @@
 <div class="container mx-auto px-4 py-6 max-w-4xl">
     <!-- Header -->
     <div class="mb-6">
-        <h1 class="text-2xl font-bold text-gray-800 mb-2">Search Results</h1>
+        <h1 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">Search Results</h1>
         @if($query)
-            <p class="text-gray-600">Results for: "<span class="font-medium">{{ $query }}</span>"</p>
+            <p style="color: var(--text-secondary);">Results for: "<span class="font-medium">{{ $query }}</span>"</p>
         @else
-            <p class="text-gray-600">Enter a search term to find tweets and users.</p>
+            <p style="color: var(--text-secondary);">Enter a search term to find tweets and users.</p>
         @endif
     </div>
 
     <!-- Search Form -->
-    <div class="bg-white rounded-lg shadow p-4 mb-6">
+    <div class="rounded-lg shadow p-4 mb-6 theme-transition" style="background-color: var(--bg-secondary);">
         <form action="{{ route('search') }}" method="GET" class="flex">
             <div class="relative flex-1">
                 <input 
@@ -21,13 +21,14 @@
                     name="query" 
                     value="{{ $query }}" 
                     placeholder="Search tweets and users..."
-                    class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="w-full pl-10 pr-4 py-2 border rounded-full focus:outline-none focus:ring-2 theme-transition"
+                    style="background-color: var(--bg-primary); color: var(--text-primary); border-color: var(--border-color); --tw-ring-color: var(--accent-color);"
                 >
-                <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--text-secondary);">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"></path>
                 </svg>
             </div>
-            <button type="submit" class="ml-3 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors">
+            <button type="submit" class="ml-3 text-white px-6 py-2 rounded-full transition-colors" style="background-color: var(--accent-color);" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
                 Search
             </button>
         </form>
@@ -36,12 +37,12 @@
     @if($query)
         <!-- Results Tabs -->
         <div class="mb-6">
-            <div class="border-b border-gray-200">
+            <div class="border-b theme-transition" style="border-color: var(--border-color);">
                 <nav class="-mb-px flex space-x-8">
-                    <button id="tweets-tab" class="tab-btn active py-2 px-1 border-b-2 border-blue-500 font-medium text-sm text-blue-600">
+                    <button id="tweets-tab" class="tab-btn active py-2 px-1 border-b-2 font-medium text-sm transition-colors" style="border-color: var(--accent-color); color: var(--accent-color);">
                         Tweets ({{ $tweets->count() }})
                     </button>
-                    <button id="users-tab" class="tab-btn py-2 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                    <button id="users-tab" class="tab-btn py-2 px-1 border-b-2 border-transparent font-medium text-sm transition-colors" style="color: var(--text-secondary);" onmouseover="this.style.color='var(--text-primary)'; this.style.borderColor='var(--border-color)'" onmouseout="this.style.color='var(--text-secondary)'; this.style.borderColor='transparent'">
                         Users ({{ $users->count() }})
                     </button>
                 </nav>

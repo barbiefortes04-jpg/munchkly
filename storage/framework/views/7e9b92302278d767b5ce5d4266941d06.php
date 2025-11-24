@@ -11,12 +11,13 @@
                            name="query" 
                            value="<?php echo e(request('query')); ?>" 
                            placeholder="Search tweets, users, or topics..." 
-                           class="w-full pl-12 pr-4 py-3 text-gray-700 bg-white border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                           class="w-full pl-12 pr-4 py-3 rounded-full shadow-sm focus:outline-none focus:ring-2 theme-transition" 
+                           style="background-color: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); --tw-ring-color: var(--accent-color);">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-4">
-                        <i class="fas fa-search text-gray-400"></i>
+                        <i class="fas fa-search" style="color: var(--text-secondary);"></i>
                     </div>
                     <button type="submit" class="absolute inset-y-0 right-0 flex items-center pr-4">
-                        <div class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full transition-colors">
+                        <div class="text-white px-6 py-2 rounded-full transition-colors" style="background-color: var(--accent-color);" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
                             Search
                         </div>
                     </button>
@@ -25,14 +26,14 @@
         </div>
     </div>
 
-    <h1 class="text-2xl font-bold mb-6">Welcome to Munchkly</h1>
+    <h1 class="text-2xl font-bold mb-6" style="color: var(--text-primary);">Welcome to Munchkly</h1>
     
     <?php if($isAuth): ?>
-        <div class="bg-white p-6 rounded-lg shadow-sm border">
-            <h2 class="text-lg font-semibold text-gray-900 mb-4">Post a Tweet</h2>
+        <div class="p-6 rounded-lg shadow-sm border theme-transition" style="background-color: var(--bg-secondary); border-color: var(--border-color);">
+            <h2 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">Post a Tweet</h2>
             <form method="POST" action="<?php echo e(route('tweets.store')); ?>" enctype="multipart/form-data" id="tweetForm">
                 <?php echo csrf_field(); ?>
-                <textarea name="content" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" rows="3" maxlength="280" placeholder="What's on your mind?" required></textarea>
+                <textarea name="content" class="w-full p-3 border rounded-lg focus:ring-2 focus:border-transparent theme-transition" rows="3" maxlength="280" placeholder="What's on your mind?" required style="background-color: var(--bg-primary); color: var(--text-primary); border-color: var(--border-color); --tw-ring-color: var(--accent-color);"></textarea>
                 
                 <!-- Media Upload Section -->
                 <div class="mt-4">
@@ -59,10 +60,10 @@
                         
                         <!-- Privacy Setting -->
                         <div class="flex items-center space-x-2">
-                            <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" style="color: var(--text-secondary);">
                                 <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
                             </svg>
-                            <select name="privacy" class="text-sm border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                            <select name="privacy" class="text-sm border rounded-md px-2 py-1 focus:outline-none focus:ring-1 theme-transition" style="background-color: var(--bg-primary); color: var(--text-primary); border-color: var(--border-color); --tw-ring-color: var(--accent-color);">
                                 <option value="public">Public</option>
                                 <option value="followers">Followers</option>
                                 <option value="close_friends">Close Friends</option>
@@ -76,26 +77,26 @@
                 </div>
                 
                 <div class="flex justify-end">
-                    <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors">Post Tweet</button>
+                    <button type="submit" class="text-white px-6 py-2 rounded-full transition-colors" style="background-color: var(--accent-color);" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Post Tweet</button>
                 </div>
             </form>
         </div>
     <?php else: ?>
-        <div class="bg-white p-6 rounded shadow text-center">
-            <h2>Welcome to Munchkly!</h2>
-            <p>Please login or register to start using the platform.</p>
+        <div class="p-6 rounded shadow text-center theme-transition" style="background-color: var(--bg-secondary);">
+            <h2 style="color: var(--text-primary);">Welcome to Munchkly!</h2>
+            <p style="color: var(--text-secondary);">Please login or register to start using the platform.</p>
         </div>
     <?php endif; ?>
     
     <!-- Display All Tweets -->
     <?php if(isset($tweets) && $tweets->count() > 0): ?>
         <div class="mt-8">
-            <h2 class="text-xl font-semibold text-gray-900 mb-6">
-                <i class="fas fa-stream text-gray-600 mr-2"></i>Recent Tweets
+            <h2 class="text-xl font-semibold mb-6" style="color: var(--text-primary);">
+                <i class="fas fa-stream mr-2" style="color: var(--text-secondary);"></i>Recent Tweets
             </h2>
             
             <?php $__currentLoopData = $tweets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tweet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="bg-white rounded-lg shadow p-6 mb-4 hover:shadow-md transition-shadow duration-200">
+                <div class="rounded-lg shadow p-6 mb-4 hover:shadow-md transition-all duration-200 theme-transition" style="background-color: var(--bg-secondary);">
                     <!-- Tweet Header -->
                     <div class="flex items-start justify-between">
                         <div class="flex items-center space-x-3">
@@ -114,13 +115,13 @@
                                 <?php endif; ?>
                             </div>
                             <div>
-                                <p class="font-medium text-gray-900">
-                                    <a href="<?php echo e(route('profile.show', $tweet->user->id)); ?>" class="hover:text-blue-600">
+                                <p class="font-medium" style="color: var(--text-primary);">
+                                    <a href="<?php echo e(route('profile.show', $tweet->user->id)); ?>" class="transition-colors" style="color: var(--text-primary);" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-primary)'">
                                         <?php echo e($tweet->user->name); ?>
 
                                     </a>
                                 </p>
-                                <p class="text-sm text-gray-500">
+                                <p class="text-sm" style="color: var(--text-secondary);">
                                     <?php echo e($tweet->time_ago); ?>
 
                                     <?php if($tweet->is_edited): ?>
@@ -154,11 +155,11 @@
                         <!-- Tweet Actions (for tweet owner) -->
                         <?php if($isAuth && $authUser && (is_array($authUser) ? $authUser['id'] : $authUser->id) == $tweet->user->id): ?>
                             <div class="flex space-x-2">
-                                <a href="<?php echo e(route('tweets.edit', $tweet->id)); ?>" class="text-gray-400 hover:text-blue-500 transition-colors duration-200"
+                                <a href="<?php echo e(route('tweets.edit', $tweet->id)); ?>" class="transition-colors duration-200" style="color: var(--text-secondary);" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-secondary)'"
                                    title="Edit Tweet">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <button onclick="deleteTweet(<?php echo e($tweet->id); ?>)" class="text-gray-400 hover:text-red-500 transition-colors duration-200"
+                                <button onclick="deleteTweet(<?php echo e($tweet->id); ?>)" class="transition-colors duration-200" style="color: var(--text-secondary);" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-secondary)'"
                                         title="Delete Tweet">
                                     <i class="fas fa-trash"></i>
                                 </button>
@@ -170,7 +171,7 @@
                     <div class="mt-4">
                         <!-- Share indicator -->
                         <?php if(isset($tweet->is_share) && $tweet->is_share): ?>
-                            <div class="flex items-center text-gray-500 text-sm mb-3">
+                            <div class="flex items-center text-sm mb-3" style="color: var(--text-secondary);">
                                 <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M23.77 15.67c-.292-.293-.767-.293-1.06 0l-2.22 2.22V7.65c0-2.068-1.683-3.75-3.75-3.75h-5.85c-.414 0-.75.336-.75.75s.336.75.75.75h5.85c1.24 0 2.25 1.01 2.25 2.25v10.24l-2.22-2.22c-.293-.293-.768-.293-1.061 0s-.293.768 0 1.061l3.5 3.5c.145.147.337.22.53.22s.385-.073.53-.22l3.5-3.5c.294-.292.294-.767.001-1.06zM10.75 20.25H4.9c-1.24 0-2.25-1.01-2.25-2.25V7.65l2.22 2.22c.148.147.34.22.532.22s.384-.073.53-.22c.293-.293.293-.768 0-1.061l-3.5-3.5c-.293-.293-.768-.293-1.061 0l-3.5 3.5c-.294.292-.294.767 0 1.06s.767.294 1.06 0l2.22-2.22V18c0 2.068 1.683 3.75 3.75 3.75h5.85c.414 0 .75-.336.75-.75s-.336-.75-.75-.75z"/>
                                 </svg>
@@ -179,11 +180,11 @@
                             
                             <!-- User's comment on share -->
                             <?php if(!empty($tweet->content)): ?>
-                                <p class="text-gray-900 text-base leading-relaxed mb-3"><?php echo e($tweet->content); ?></p>
+                                <p class="text-base leading-relaxed mb-3" style="color: var(--text-primary);"><?php echo e($tweet->content); ?></p>
                             <?php endif; ?>
                             
                             <!-- Original shared tweet -->
-                            <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                            <div class="border rounded-lg p-4 theme-transition" style="border-color: var(--border-color); background-color: var(--bg-primary);">
                                 <div class="flex items-start space-x-3 mb-2">
                                     <div class="flex-shrink-0">
                                         <?php if($tweet->shared_tweet['user']['profile_picture'] ?? false): ?>
@@ -200,20 +201,20 @@
                                         <?php endif; ?>
                                     </div>
                                     <div>
-                                        <p class="font-medium text-gray-900 text-sm">
-                                            <a href="<?php echo e(route('profile.show', $tweet->shared_tweet['user']['id'])); ?>" class="hover:text-blue-600">
+                                        <p class="font-medium text-sm" style="color: var(--text-primary);">
+                                            <a href="<?php echo e(route('profile.show', $tweet->shared_tweet['user']['id'])); ?>" class="transition-colors" style="color: var(--text-primary);" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-primary)'">
                                                 <?php echo e($tweet->shared_tweet['user']['name']); ?>
 
                                             </a>
                                         </p>
-                                        <p class="text-xs text-gray-500">
+                                        <p class="text-xs" style="color: var(--text-secondary);">
                                             <?php echo e(\Carbon\Carbon::parse($tweet->shared_tweet['created_at'])->diffForHumans()); ?>
 
                                         </p>
                                     </div>
                                 </div>
                                 
-                                <p class="text-gray-800 text-sm mb-2"><?php echo e($tweet->shared_tweet['content']); ?></p>
+                                <p class="text-sm mb-2" style="color: var(--text-primary);"><?php echo e($tweet->shared_tweet['content']); ?></p>
                                 
                                 <!-- Original tweet media -->
                                 <?php if(isset($tweet->shared_tweet['photos']) && count($tweet->shared_tweet['photos']) > 0): ?>
@@ -221,16 +222,19 @@
                                         <?php if(count($tweet->shared_tweet['photos']) == 1): ?>
                                             <img src="<?php echo e(asset('storage/tweet_media/photos/' . $tweet->shared_tweet['photos'][0])); ?>" 
                                                  alt="Tweet photo" 
-                                                 class="w-full max-w-sm rounded-lg object-cover cursor-pointer"
-                                                 onclick="openImageModal('<?php echo e(asset('storage/tweet_media/photos/' . $tweet->shared_tweet['photos'][0])); ?>')">
+                                                 class="w-full max-w-sm rounded-lg object-cover cursor-pointer shadow-md"
+                                                 style="max-height: 250px;"
+                                                 onclick="openImageModal('<?php echo e(asset('storage/tweet_media/photos/' . $tweet->shared_tweet['photos'][0])); ?>')"
+                                                 onerror="this.src='<?php echo e(asset('images/placeholder.png')); ?>'; this.onerror=null;">
                                         <?php else: ?>
                                             <div class="grid grid-cols-2 gap-1">
                                                 <?php $__currentLoopData = $tweet->shared_tweet['photos']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <?php if($index < 4): ?>
                                                         <img src="<?php echo e(asset('storage/tweet_media/photos/' . $photo)); ?>" 
                                                              alt="Tweet photo <?php echo e($index + 1); ?>" 
-                                                             class="w-full h-16 rounded object-cover cursor-pointer"
-                                                             onclick="openImageModal('<?php echo e(asset('storage/tweet_media/photos/' . $photo)); ?>')">
+                                                             class="w-full h-16 rounded object-cover cursor-pointer shadow-sm"
+                                                             onclick="openImageModal('<?php echo e(asset('storage/tweet_media/photos/' . $photo)); ?>')"
+                                                             onerror="this.src='<?php echo e(asset('images/placeholder.png')); ?>'; this.onerror=null;">
                                                     <?php endif; ?>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </div>
@@ -240,16 +244,21 @@
                                 
                                 <?php if(isset($tweet->shared_tweet['video']) && $tweet->shared_tweet['video']): ?>
                                     <div class="mb-2">
-                                        <video controls class="w-full max-w-sm rounded-lg">
+                                        <video controls class="w-full max-w-sm rounded-lg shadow-md" style="max-height: 250px;" preload="metadata">
                                             <source src="<?php echo e(asset('storage/tweet_media/videos/' . $tweet->shared_tweet['video'])); ?>" type="video/mp4">
-                                            Your browser does not support the video tag.
+                                            <source src="<?php echo e(asset('storage/tweet_media/videos/' . $tweet->shared_tweet['video'])); ?>" type="video/webm">
+                                            <p class="text-gray-500 p-2 bg-gray-100 rounded text-xs">
+                                                Your browser does not support the video tag. 
+                                                <a href="<?php echo e(asset('storage/tweet_media/videos/' . $tweet->shared_tweet['video'])); ?>" 
+                                                   class="text-blue-500 hover:underline" download>Download</a>
+                                            </p>
                                         </video>
                                     </div>
                                 <?php endif; ?>
                             </div>
                         <?php else: ?>
                             <!-- Regular tweet content -->
-                            <p class="text-gray-900 text-base leading-relaxed"><?php echo e($tweet->content); ?></p>
+                            <p class="text-base leading-relaxed" style="color: var(--text-primary);"><?php echo e($tweet->content); ?></p>
                             
                             <!-- Media Content -->
                             <?php if(isset($tweet->photos) && count($tweet->photos) > 0): ?>
@@ -257,19 +266,33 @@
                                     <?php if(count($tweet->photos) == 1): ?>
                                         <img src="<?php echo e(asset('storage/tweet_media/photos/' . $tweet->photos[0])); ?>" 
                                              alt="Tweet photo" 
-                                             class="w-full max-w-lg rounded-lg object-cover cursor-pointer"
-                                             onclick="openImageModal('<?php echo e(asset('storage/tweet_media/photos/' . $tweet->photos[0])); ?>')">
+                                             class="w-full max-w-lg rounded-lg object-cover cursor-pointer shadow-md"
+                                             style="max-height: 400px;"
+                                             onclick="openImageModal('<?php echo e(asset('storage/tweet_media/photos/' . $tweet->photos[0])); ?>')"
+                                             onerror="this.src='<?php echo e(asset('images/placeholder.png')); ?>'; this.onerror=null;">
+                                    <?php elseif(count($tweet->photos) == 2): ?>
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <?php $__currentLoopData = $tweet->photos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <img src="<?php echo e(asset('storage/tweet_media/photos/' . $photo)); ?>" 
+                                                     alt="Tweet photo <?php echo e($index + 1); ?>" 
+                                                     class="w-full h-48 rounded-lg object-cover cursor-pointer shadow-md"
+                                                     onclick="openImageModal('<?php echo e(asset('storage/tweet_media/photos/' . $photo)); ?>')"
+                                                     onerror="this.src='<?php echo e(asset('images/placeholder.png')); ?>'; this.onerror=null;">
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </div>
                                     <?php else: ?>
-                                        <div class="grid <?php echo e(count($tweet->photos) == 2 ? 'grid-cols-2' : 'grid-cols-2'); ?> gap-2">
+                                        <div class="grid grid-cols-2 gap-2">
                                             <?php $__currentLoopData = $tweet->photos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <?php if($index < 4): ?>
                                                     <div class="relative">
                                                         <img src="<?php echo e(asset('storage/tweet_media/photos/' . $photo)); ?>" 
                                                              alt="Tweet photo <?php echo e($index + 1); ?>" 
-                                                             class="w-full h-40 rounded-lg object-cover cursor-pointer"
-                                                             onclick="openImageModal('<?php echo e(asset('storage/tweet_media/photos/' . $photo)); ?>')">
+                                                             class="w-full h-32 rounded-lg object-cover cursor-pointer shadow-md"
+                                                             onclick="openImageModal('<?php echo e(asset('storage/tweet_media/photos/' . $photo)); ?>')"
+                                                             onerror="this.src='<?php echo e(asset('images/placeholder.png')); ?>'; this.onerror=null;">
                                                         <?php if($index == 3 && count($tweet->photos) > 4): ?>
-                                                            <div class="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex items-center justify-center">
+                                                            <div class="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex items-center justify-center cursor-pointer"
+                                                                 onclick="showAllPhotos(<?php echo e(json_encode($tweet->photos)); ?>, <?php echo e($index); ?>)">
                                                                 <span class="text-white font-bold text-xl">+<?php echo e(count($tweet->photos) - 4); ?></span>
                                                             </div>
                                                         <?php endif; ?>
@@ -283,9 +306,14 @@
                             
                             <?php if(isset($tweet->video) && $tweet->video): ?>
                                 <div class="mt-3">
-                                    <video controls class="w-full max-w-lg rounded-lg">
+                                    <video controls class="w-full max-w-lg rounded-lg shadow-md" style="max-height: 400px;" preload="metadata">
                                         <source src="<?php echo e(asset('storage/tweet_media/videos/' . $tweet->video)); ?>" type="video/mp4">
-                                        Your browser does not support the video tag.
+                                        <source src="<?php echo e(asset('storage/tweet_media/videos/' . $tweet->video)); ?>" type="video/webm">
+                                        <p class="p-4 rounded theme-transition" style="color: var(--text-secondary); background-color: var(--bg-primary);">
+                                            Your browser does not support the video tag. 
+                                            <a href="<?php echo e(asset('storage/tweet_media/videos/' . $tweet->video)); ?>" 
+                                               class="hover:underline" style="color: var(--accent-color);" download>Download video</a>
+                                        </p>
                                     </video>
                                 </div>
                             <?php endif; ?>
@@ -293,12 +321,15 @@
                     </div>
 
                     <!-- Tweet Footer -->
-                    <div class="mt-4 flex items-center justify-between pt-3 border-t border-gray-100">
+                    <div class="mt-4 flex items-center justify-between pt-3 border-t theme-transition" style="border-color: var(--border-color);">
                         <div class="flex items-center space-x-6">
                             <!-- Like Button -->
                             <?php if($isAuth): ?>
                                 <button onclick="toggleLike(<?php echo e($tweet->id); ?>)" 
-                                        class="like-btn flex items-center space-x-1 transition-colors duration-200 <?php echo e($tweet->user_has_liked ? 'text-red-500' : 'text-gray-400 hover:text-red-500'); ?>"
+                                        class="like-btn flex items-center space-x-1 transition-colors duration-200 <?php echo e($tweet->user_has_liked ? 'text-red-500' : ''); ?>"
+                                        style="<?php echo e(!$tweet->user_has_liked ? 'color: var(--text-secondary);' : ''); ?>"
+                                        onmouseover="<?php echo e(!$tweet->user_has_liked ? 'this.style.color=\"#ef4444\"' : ''); ?>"
+                                        onmouseout="<?php echo e(!$tweet->user_has_liked ? 'this.style.color=\"var(--text-secondary)\"' : ''); ?>"
                                         id="like-btn-<?php echo e($tweet->id); ?>">
                                     <i class="<?php echo e($tweet->user_has_liked ? 'fas' : 'far'); ?> fa-heart" id="like-icon-<?php echo e($tweet->id); ?>"></i>
                                     <span class="text-sm font-medium" id="like-count-<?php echo e($tweet->id); ?>"><?php echo e($tweet->likes_count); ?></span>
@@ -307,7 +338,10 @@
                                 <!-- Share Button (only for non-shared tweets and not own tweets) -->
                                 <?php if(!isset($tweet->is_share) && $authUser && (is_array($authUser) ? $authUser['id'] : $authUser->id) != $tweet->user->id): ?>
                                     <button onclick="shareTweet(<?php echo e($tweet->id); ?>)" 
-                                            class="flex items-center space-x-1 text-gray-400 hover:text-green-500 transition-colors duration-200"
+                                            class="flex items-center space-x-1 transition-colors duration-200"
+                                            style="color: var(--text-secondary);"
+                                            onmouseover="this.style.color='#10b981'"
+                                            onmouseout="this.style.color='var(--text-secondary)'"
                                             title="Share Tweet">
                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M23.77 15.67c-.292-.293-.767-.293-1.06 0l-2.22 2.22V7.65c0-2.068-1.683-3.75-3.75-3.75h-5.85c-.414 0-.75.336-.75.75s.336.75.75.75h5.85c1.24 0 2.25 1.01 2.25 2.25v10.24l-2.22-2.22c-.293-.293-.768-.293-1.061 0s-.293.768 0 1.061l3.5 3.5c.145.147.337.22.53.22s.385-.073.53-.22l3.5-3.5c.294-.292.294-.767.001-1.06zM10.75 20.25H4.9c-1.24 0-2.25-1.01-2.25-2.25V7.65l2.22 2.22c.148.147.34.22.532.22s.384-.073.53-.22c.293-.293.293-.768 0-1.061l-3.5-3.5c-.293-.293-.768-.293-1.061 0l-3.5 3.5c-.294.292-.294.767 0 1.06s.767.294 1.06 0l2.22-2.22V18c0 2.068 1.683 3.75 3.75 3.75h5.85c.414 0 .75-.336.75-.75s-.336-.75-.75-.75z"/>
@@ -316,14 +350,14 @@
                                     </button>
                                 <?php endif; ?>
                             <?php else: ?>
-                                <div class="flex items-center space-x-1 text-gray-400">
+                                <div class="flex items-center space-x-1" style="color: var(--text-secondary);">
                                     <i class="far fa-heart"></i>
                                     <span class="text-sm font-medium"><?php echo e($tweet->likes_count); ?></span>
                                 </div>
                             <?php endif; ?>
                         </div>
                         
-                        <span class="text-xs text-gray-400"><?php echo e($tweet->formatted_created_at); ?></span>
+                        <span class="text-xs" style="color: var(--text-secondary);"><?php echo e($tweet->formatted_created_at); ?></span>
                     </div>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

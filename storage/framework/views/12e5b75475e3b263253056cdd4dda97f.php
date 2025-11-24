@@ -4,13 +4,13 @@
     <div class="max-w-4xl mx-auto">
         <!-- Back Button -->
         <div class="mb-6">
-            <a href="<?php echo e(route('home')); ?>" class="inline-flex items-center text-blue-500 hover:text-blue-600 font-medium">
+            <a href="<?php echo e(route('home')); ?>" class="inline-flex items-center font-medium transition-colors" style="color: var(--accent-color);" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
                 <i class="fas fa-arrow-left mr-2"></i>Back to Home
             </a>
         </div>
 
         <!-- Profile Card with Cover Photo -->
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-6">
+        <div class="rounded-2xl shadow-xl overflow-hidden mb-6 theme-transition" style="background-color: var(--bg-secondary);">
             <!-- Cover Photo Section -->
             <div class="relative h-48 bg-gradient-to-br from-orange-300 via-pink-300 to-purple-400" style="background-image: <?php echo e($user->cover_photo ? 'url(' . asset('storage/cover_photos/' . $user->cover_photo) . ')' : ''); ?>; background-size: cover; background-position: center;">
                 <!-- Cover Photo Upload (only for own profile) -->
@@ -73,13 +73,14 @@
                 
                 <!-- Name and Actions -->
                 <div class="text-center mb-6">
-                    <h1 class="text-3xl font-bold text-gray-900 mb-4"><?php echo e($user->name); ?></h1>
+                    <h1 class="text-3xl font-bold mb-4" style="color: var(--text-primary);"><?php echo e($user->name); ?></h1>
                     
                     <!-- Follow Button (only if viewing another user's profile) -->
                     <?php if($isAuth && $authUser && (is_array($authUser) ? $authUser['id'] : $authUser->id) != $user->id): ?>
                         <div class="flex space-x-3 justify-center">
                             <button onclick="toggleFollow(<?php echo e($user->id); ?>)" 
-                                    class="follow-btn px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105 <?php echo e($isFollowing ? 'bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300' : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg'); ?>"
+                                    class="follow-btn px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105 <?php echo e($isFollowing ? 'border' : 'text-white shadow-lg'); ?>"
+                                    style="<?php echo e($isFollowing ? 'background-color: var(--bg-primary); color: var(--text-secondary); border-color: var(--border-color);' : 'background: linear-gradient(to right, var(--accent-color), #8b5cf6);'); ?>"
                                     id="follow-btn-<?php echo e($user->id); ?>">
                                 <i class="fas <?php echo e($isFollowing ? 'fa-user-check' : 'fa-user-plus'); ?> mr-2"></i>
                                 <span id="follow-text-<?php echo e($user->id); ?>"><?php echo e($isFollowing ? 'Following' : 'Follow'); ?></span>
@@ -87,9 +88,10 @@
                             
                             <?php if($isFollowing): ?>
                                 <button onclick="toggleCloseFriend(<?php echo e($user->id); ?>)" 
-                                        class="close-friend-btn px-6 py-3 rounded-full font-medium transition-all transform hover:scale-105 <?php echo e($isCloseFriend ? 'bg-green-100 hover:bg-green-200 text-green-700 border border-green-300' : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-300'); ?>"
+                                        class="close-friend-btn px-6 py-3 rounded-full font-medium transition-all transform hover:scale-105 border"
+                                        style="<?php echo e($isCloseFriend ? 'background-color: #dcfce7; color: #166534; border-color: #22c55e;' : 'background-color: var(--bg-primary); color: var(--text-secondary); border-color: var(--border-color);'); ?>"
                                         id="close-friend-btn-<?php echo e($user->id); ?>">
-                                    <i class="fas <?php echo e($isCloseFriend ? 'fa-heart' : 'fa-heart-o'); ?> mr-2" style="color: <?php echo e($isCloseFriend ? '#10B981' : '#6B7280'); ?>"></i>
+                                    <i class="fas <?php echo e($isCloseFriend ? 'fa-heart' : 'fa-heart-o'); ?> mr-2" style="color: <?php echo e($isCloseFriend ? '#10B981' : 'var(--text-secondary)'); ?>"></i>
                                     <span id="close-friend-text-<?php echo e($user->id); ?>"><?php echo e($isCloseFriend ? 'Close Friend' : 'Add Close Friend'); ?></span>
                                 </button>
                             <?php endif; ?>
@@ -98,22 +100,22 @@
                 </div>
 
                 <!-- Profile Stats -->
-                <div class="grid grid-cols-4 gap-6 p-6 bg-gray-50 rounded-xl">
+                <div class="grid grid-cols-4 gap-6 p-6 rounded-xl theme-transition" style="background-color: var(--bg-primary);">
                     <div class="text-center">
-                        <div class="text-2xl font-bold text-blue-600"><?php echo e($tweetCount); ?></div>
-                        <div class="text-sm text-gray-600 font-medium"><?php echo e($tweetCount === 1 ? 'Tweet' : 'Tweets'); ?></div>
+                        <div class="text-2xl font-bold" style="color: var(--accent-color);"><?php echo e($tweetCount); ?></div>
+                        <div class="text-sm font-medium" style="color: var(--text-secondary);"><?php echo e($tweetCount === 1 ? 'Tweet' : 'Tweets'); ?></div>
                     </div>
                     <div class="text-center">
                         <div class="text-2xl font-bold text-red-500"><?php echo e($totalLikesReceived); ?></div>
-                        <div class="text-sm text-gray-600 font-medium"><?php echo e($totalLikesReceived === 1 ? 'Like' : 'Likes'); ?></div>
+                        <div class="text-sm font-medium" style="color: var(--text-secondary);"><?php echo e($totalLikesReceived === 1 ? 'Like' : 'Likes'); ?></div>
                     </div>
-                    <div class="text-center cursor-pointer hover:bg-gray-100 rounded-lg p-2 transition-colors" onclick="toggleFollowersModal()">
+                    <div class="text-center cursor-pointer rounded-lg p-2 transition-colors theme-transition" style="background-color: var(--bg-primary);" onmouseover="this.style.backgroundColor='var(--border-color)'" onmouseout="this.style.backgroundColor='var(--bg-primary)'" onclick="toggleFollowersModal()">
                         <div class="text-2xl font-bold text-green-500" id="followers-count"><?php echo e($followersCount); ?></div>
-                        <div class="text-sm text-gray-600 font-medium hover:text-blue-600"><?php echo e($followersCount === 1 ? 'Follower' : 'Followers'); ?></div>
+                        <div class="text-sm font-medium transition-colors" style="color: var(--text-secondary);" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-secondary)'"><?php echo e($followersCount === 1 ? 'Follower' : 'Followers'); ?></div>
                     </div>
                     <div class="text-center">
                         <div class="text-2xl font-bold text-purple-500"><?php echo e($followingCount); ?></div>
-                        <div class="text-sm text-gray-600 font-medium">Following</div>
+                        <div class="text-sm font-medium" style="color: var(--text-secondary);">Following</div>
                     </div>
                 </div>
             </div>
@@ -122,11 +124,11 @@
         <!-- Followers Modal -->
         <div id="followers-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50" onclick="toggleFollowersModal()">
             <div class="flex items-center justify-center min-h-screen p-4">
-                <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-96 overflow-hidden" onclick="event.stopPropagation()">
-                    <div class="p-4 border-b border-gray-200">
+                <div class="rounded-lg shadow-xl max-w-md w-full max-h-96 overflow-hidden theme-transition" style="background-color: var(--bg-secondary);" onclick="event.stopPropagation()">
+                    <div class="p-4 border-b theme-transition" style="border-color: var(--border-color);">
                         <div class="flex items-center justify-between">
-                            <h3 class="text-lg font-semibold text-gray-900">Followers</h3>
-                            <button onclick="toggleFollowersModal()" class="text-gray-400 hover:text-gray-600">
+                            <h3 class="text-lg font-semibold" style="color: var(--text-primary);">Followers</h3>
+                            <button onclick="toggleFollowersModal()" class="transition-colors" style="color: var(--text-secondary);" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
@@ -149,7 +151,7 @@
                                             </div>
                                         <?php endif; ?>
                                         <div class="flex-1">
-                                            <a href="<?php echo e(route('profile.show', $follower->id)); ?>" class="font-medium text-gray-900 hover:text-blue-600">
+                                            <a href="<?php echo e(route('profile.show', $follower->id)); ?>" class="font-medium transition-colors" style="color: var(--text-primary);" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-primary)'">
                                                 <?php echo e($follower->name); ?>
 
                                             </a>
@@ -158,7 +160,7 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
                         <?php else: ?>
-                            <div class="text-center text-gray-500">
+                            <div class="text-center" style="color: var(--text-secondary);">
                                 <i class="fas fa-users text-3xl mb-2"></i>
                                 <p>No followers yet</p>
                             </div>
@@ -171,12 +173,12 @@
         <!-- User's Tweets -->
         <div class="space-y-4">
             <?php if($tweets->count() > 0): ?>
-                <h2 class="text-xl font-semibold text-gray-900">
-                    <i class="fas fa-stream text-gray-600 mr-2"></i><?php echo e($user->name); ?>'s Tweets
+                <h2 class="text-xl font-semibold" style="color: var(--text-primary);">
+                    <i class="fas fa-stream mr-2" style="color: var(--text-secondary);"></i><?php echo e($user->name); ?>'s Tweets
                 </h2>
                 
                 <?php $__currentLoopData = $tweets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tweet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="bg-white rounded-lg shadow p-6 hover:shadow-md transition-shadow duration-200">
+                    <div class="rounded-lg shadow p-6 hover:shadow-md transition-all duration-200 theme-transition" style="background-color: var(--bg-secondary);">
                         <!-- Tweet Header -->
                         <div class="flex items-start justify-between">
                             <div class="flex items-center space-x-3">
@@ -195,8 +197,8 @@
                                     <?php endif; ?>
                                 </div>
                                 <div>
-                                    <p class="font-medium text-gray-900"><?php echo e($tweet->user->name); ?></p>
-                                    <p class="text-sm text-gray-500">
+                                    <p class="font-medium" style="color: var(--text-primary);"><?php echo e($tweet->user->name); ?></p>
+                                    <p class="text-sm" style="color: var(--text-secondary);">
                                         <?php echo e($tweet->time_ago); ?>
 
                                         <?php if($tweet->is_edited && $isAuth && $authUser && (is_array($authUser) ? $authUser['id'] : $authUser->id) == $user->id): ?>
@@ -230,11 +232,11 @@
                             <!-- Tweet Actions (for tweet owner viewing their own profile) -->
                             <?php if($isAuth && $authUser && (is_array($authUser) ? $authUser['id'] : $authUser->id) == $tweet->user->id && (is_array($authUser) ? $authUser['id'] : $authUser->id) == $user->id): ?>
                                 <div class="flex space-x-2">
-                                    <a href="<?php echo e(route('tweets.edit', $tweet->id)); ?>" class="text-gray-400 hover:text-blue-500 transition-colors duration-200"
+                                    <a href="<?php echo e(route('tweets.edit', $tweet->id)); ?>" class="transition-colors duration-200" style="color: var(--text-secondary);" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-secondary)'"
                                        title="Edit Tweet">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <button onclick="deleteTweet(<?php echo e($tweet->id); ?>)" class="text-gray-400 hover:text-red-500 transition-colors duration-200"
+                                    <button onclick="deleteTweet(<?php echo e($tweet->id); ?>)" class="transition-colors duration-200" style="color: var(--text-secondary);" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-secondary)'"
                                             title="Delete Tweet">
                                         <i class="fas fa-trash"></i>
                                     </button>
@@ -246,7 +248,7 @@
                         <div class="mt-4">
                             <!-- Share indicator -->
                             <?php if(isset($tweet->is_share) && $tweet->is_share): ?>
-                                <div class="flex items-center text-gray-500 text-sm mb-3">
+                                <div class="flex items-center text-sm mb-3" style="color: var(--text-secondary);">
                                     <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M23.77 15.67c-.292-.293-.767-.293-1.06 0l-2.22 2.22V7.65c0-2.068-1.683-3.75-3.75-3.75h-5.85c-.414 0-.75.336-.75.75s.336.75.75.75h5.85c1.24 0 2.25 1.01 2.25 2.25v10.24l-2.22-2.22c-.293-.293-.768-.293-1.061 0s-.293.768 0 1.061l3.5 3.5c.145.147.337.22.53.22s.385-.073.53-.22l3.5-3.5c.294-.292.294-.767.001-1.06zM10.75 20.25H4.9c-1.24 0-2.25-1.01-2.25-2.25V7.65l2.22 2.22c.148.147.34.22.532.22s.384-.073.53-.22c.293-.293.293-.768 0-1.061l-3.5-3.5c-.293-.293-.768-.293-1.061 0l-3.5 3.5c-.294.292-.294.767 0 1.06s.767.294 1.06 0l2.22-2.22V18c0 2.068 1.683 3.75 3.75 3.75h5.85c.414 0 .75-.336.75-.75s-.336-.75-.75-.75z"/>
                                     </svg>
@@ -255,11 +257,11 @@
                                 
                                 <!-- User's comment on share -->
                                 <?php if(!empty($tweet->content)): ?>
-                                    <p class="text-gray-900 text-base leading-relaxed mb-3"><?php echo e($tweet->content); ?></p>
+                                    <p class="text-base leading-relaxed mb-3" style="color: var(--text-primary);"><?php echo e($tweet->content); ?></p>
                                 <?php endif; ?>
                                 
                                 <!-- Original shared tweet -->
-                                <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                                <div class="border rounded-lg p-4 theme-transition" style="border-color: var(--border-color); background-color: var(--bg-primary);">
                                     <div class="flex items-start space-x-3 mb-2">
                                         <div class="flex-shrink-0">
                                             <?php if($tweet->shared_tweet['user']['profile_picture'] ?? false): ?>
@@ -276,20 +278,20 @@
                                             <?php endif; ?>
                                         </div>
                                         <div>
-                                            <p class="font-medium text-gray-900 text-sm">
-                                                <a href="<?php echo e(route('profile.show', $tweet->shared_tweet['user']['id'])); ?>" class="hover:text-blue-600">
+                                            <p class="font-medium text-sm" style="color: var(--text-primary);">
+                                                <a href="<?php echo e(route('profile.show', $tweet->shared_tweet['user']['id'])); ?>" class="transition-colors" style="color: var(--text-primary);" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-primary)'">
                                                     <?php echo e($tweet->shared_tweet['user']['name']); ?>
 
                                                 </a>
                                             </p>
-                                            <p class="text-xs text-gray-500">
+                                            <p class="text-xs" style="color: var(--text-secondary);">
                                                 <?php echo e(\Carbon\Carbon::parse($tweet->shared_tweet['created_at'])->diffForHumans()); ?>
 
                                             </p>
                                         </div>
                                     </div>
                                     
-                                    <p class="text-gray-800 text-sm mb-2"><?php echo e($tweet->shared_tweet['content']); ?></p>
+                                    <p class="text-sm mb-2" style="color: var(--text-primary);"><?php echo e($tweet->shared_tweet['content']); ?></p>
                                     
                                     <!-- Original tweet media -->
                                     <?php if(isset($tweet->shared_tweet['photos']) && count($tweet->shared_tweet['photos']) > 0): ?>
@@ -325,7 +327,7 @@
                                 </div>
                             <?php else: ?>
                                 <!-- Regular tweet content -->
-                                <p class="text-gray-900 text-base leading-relaxed"><?php echo e($tweet->content); ?></p>
+                                <p class="text-base leading-relaxed" style="color: var(--text-primary);"><?php echo e($tweet->content); ?></p>
                                 
                                 <!-- Media Content -->
                                 <?php if(isset($tweet->photos) && count($tweet->photos) > 0): ?>
@@ -369,35 +371,38 @@
                         </div>
 
                         <!-- Tweet Footer -->
-                        <div class="mt-4 flex items-center justify-between pt-3 border-t border-gray-100">
+                        <div class="mt-4 flex items-center justify-between pt-3 border-t theme-transition" style="border-color: var(--border-color);">
                             <div class="flex items-center space-x-6">
                                 <!-- Like Button -->
                                 <?php if($isAuth): ?>
                                     <button onclick="toggleLike(<?php echo e($tweet->id); ?>)" 
-                                            class="like-btn flex items-center space-x-1 text-gray-400 hover:text-red-500 transition-colors duration-200"
+                                            class="like-btn flex items-center space-x-1 transition-colors duration-200" 
+                                            style="color: var(--text-secondary);"
+                                            onmouseover="this.style.color='#ef4444'"
+                                            onmouseout="this.style.color='var(--text-secondary)'"
                                             id="like-btn-<?php echo e($tweet->id); ?>">
                                         <i class="far fa-heart" id="like-icon-<?php echo e($tweet->id); ?>"></i>
                                         <span class="text-sm font-medium" id="like-count-<?php echo e($tweet->id); ?>"><?php echo e($tweet->likes_count); ?></span>
                                     </button>
                                 <?php else: ?>
-                                    <div class="flex items-center space-x-1 text-gray-400">
+                                    <div class="flex items-center space-x-1" style="color: var(--text-secondary);">
                                         <i class="far fa-heart"></i>
                                         <span class="text-sm font-medium"><?php echo e($tweet->likes_count); ?></span>
                                     </div>
                                 <?php endif; ?>
                             </div>
                             
-                            <span class="text-xs text-gray-400"><?php echo e($tweet->formatted_created_at); ?></span>
+                            <span class="text-xs" style="color: var(--text-secondary);"><?php echo e($tweet->formatted_created_at); ?></span>
                         </div>
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php else: ?>
-                <div class="text-center py-12 bg-white rounded-lg shadow">
-                    <i class="fas fa-feather-alt text-gray-300 text-6xl mb-4"></i>
-                    <h3 class="text-lg font-medium text-gray-900 mb-2">No tweets yet</h3>
-                    <p class="text-gray-500">
+                <div class="text-center py-12 rounded-lg shadow theme-transition" style="background-color: var(--bg-secondary);">
+                    <i class="fas fa-feather-alt text-6xl mb-4" style="color: var(--border-color);"></i>
+                    <h3 class="text-lg font-medium mb-2" style="color: var(--text-primary);">No tweets yet</h3>
+                    <p style="color: var(--text-secondary);">
                         <?php if($isAuth && $authUser && $user->id == (is_array($authUser) ? $authUser['id'] : $authUser->id)): ?>
-                            <a href="<?php echo e(route('home')); ?>" class="text-blue-500 hover:text-blue-600">Start sharing your thoughts!</a>
+                            <a href="<?php echo e(route('home')); ?>" class="transition-colors" style="color: var(--accent-color);" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Start sharing your thoughts!</a>
                         <?php else: ?>
                             <?php echo e($user->name); ?> hasn't posted any tweets yet.
                         <?php endif; ?>
@@ -504,10 +509,16 @@
                 const followersCount = document.getElementById('followers-count');
                 
                 if (data.following) {
-                    followBtn.className = 'follow-btn px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105 bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300';
+                    followBtn.style.backgroundColor = 'var(--bg-primary)';
+                    followBtn.style.color = 'var(--text-secondary)';
+                    followBtn.style.borderColor = 'var(--border-color)';
+                    followBtn.className = 'follow-btn px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105 border';
                     followBtn.innerHTML = '<i class="fas fa-user-check mr-2"></i><span id="follow-text-' + userId + '">Following</span>';
                 } else {
-                    followBtn.className = 'follow-btn px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg';
+                    followBtn.style.background = 'linear-gradient(to right, var(--accent-color), #8b5cf6)';
+                    followBtn.style.color = 'white';
+                    followBtn.style.borderColor = 'transparent';
+                    followBtn.className = 'follow-btn px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105 text-white shadow-lg';
                     followBtn.innerHTML = '<i class="fas fa-user-plus mr-2"></i><span id="follow-text-' + userId + '">Follow</span>';
                 }
                 
@@ -538,13 +549,19 @@
                 const icon = closeFriendBtn.querySelector('i');
                 
                 if (data.is_close_friend) {
-                    closeFriendBtn.className = 'close-friend-btn px-6 py-3 rounded-full font-medium transition-all transform hover:scale-105 bg-green-100 hover:bg-green-200 text-green-700 border border-green-300';
+                    closeFriendBtn.style.backgroundColor = '#dcfce7';
+                    closeFriendBtn.style.color = '#166534';
+                    closeFriendBtn.style.borderColor = '#22c55e';
+                    closeFriendBtn.className = 'close-friend-btn px-6 py-3 rounded-full font-medium transition-all transform hover:scale-105 border';
                     icon.style.color = '#10B981';
                     icon.className = 'fas fa-heart mr-2';
                     closeFriendText.textContent = 'Close Friend';
                 } else {
-                    closeFriendBtn.className = 'close-friend-btn px-6 py-3 rounded-full font-medium transition-all transform hover:scale-105 bg-white hover:bg-gray-50 text-gray-700 border border-gray-300';
-                    icon.style.color = '#6B7280';
+                    closeFriendBtn.style.backgroundColor = 'var(--bg-primary)';
+                    closeFriendBtn.style.color = 'var(--text-secondary)';
+                    closeFriendBtn.style.borderColor = 'var(--border-color)';
+                    closeFriendBtn.className = 'close-friend-btn px-6 py-3 rounded-full font-medium transition-all transform hover:scale-105 border';
+                    icon.style.color = 'var(--text-secondary)';
                     icon.className = 'fas fa-heart-o mr-2';
                     closeFriendText.textContent = 'Add Close Friend';
                 }
