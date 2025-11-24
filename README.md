@@ -93,16 +93,16 @@ Edit `.env` file with your database credentials:
 ```env
 APP_NAME=Munchkly
 APP_ENV=local
-APP_KEY=base64:your-generated-key
+APP_KEY=base64:YCWoNx9rFyr454mlLQrwOLzmDjyOC+UMhA/9TaNJCug=
 APP_DEBUG=true
-APP_URL=http://localhost:8000
+APP_URL=http://localhost
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=munchkly
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
 ## Database Setup Steps
