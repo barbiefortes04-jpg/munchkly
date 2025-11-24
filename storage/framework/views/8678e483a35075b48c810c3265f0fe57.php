@@ -118,7 +118,9 @@
                     <!-- Logo -->
                     <div class="flex items-center">
                         <a href="<?php echo e(route('home')); ?>" class="flex items-center">
-                            <i class="fas fa-kiwi-bird text-2xl mr-2" style="color: var(--accent-color);"></i>
+                            <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center mr-2 overflow-hidden">
+                                <img src="<?php echo e(asset('images/logo.jpg')); ?>" alt="Munchkly Logo" class="w-6 h-6 rounded-full object-cover">
+                            </div>
                             <span class="text-xl font-bold" style="color: var(--text-primary);">Munchkly</span>
                         </a>
                     </div>

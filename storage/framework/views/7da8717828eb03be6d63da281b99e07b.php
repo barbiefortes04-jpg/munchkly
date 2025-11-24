@@ -4,16 +4,16 @@
 <div class="container mx-auto px-4 py-6 max-w-4xl">
     <!-- Header -->
     <div class="mb-6">
-        <h1 class="text-2xl font-bold text-gray-800 mb-2">Search Results</h1>
+        <h1 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">Search Results</h1>
         <?php if($query): ?>
-            <p class="text-gray-600">Results for: "<span class="font-medium"><?php echo e($query); ?></span>"</p>
+            <p style="color: var(--text-secondary);">Results for: "<span class="font-medium"><?php echo e($query); ?></span>"</p>
         <?php else: ?>
-            <p class="text-gray-600">Enter a search term to find tweets and users.</p>
+            <p style="color: var(--text-secondary);">Enter a search term to find tweets and users.</p>
         <?php endif; ?>
     </div>
 
     <!-- Search Form -->
-    <div class="bg-white rounded-lg shadow p-4 mb-6">
+    <div class="rounded-lg shadow p-4 mb-6 theme-transition" style="background-color: var(--bg-secondary);">
         <form action="<?php echo e(route('search')); ?>" method="GET" class="flex">
             <div class="relative flex-1">
                 <input 
@@ -21,13 +21,14 @@
                     name="query" 
                     value="<?php echo e($query); ?>" 
                     placeholder="Search tweets and users..."
-                    class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="w-full pl-10 pr-4 py-2 border rounded-full focus:outline-none focus:ring-2 theme-transition"
+                    style="background-color: var(--bg-primary); color: var(--text-primary); border-color: var(--border-color); --tw-ring-color: var(--accent-color);"
                 >
-                <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--text-secondary);">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"></path>
                 </svg>
             </div>
-            <button type="submit" class="ml-3 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors">
+            <button type="submit" class="ml-3 text-white px-6 py-2 rounded-full transition-colors" style="background-color: var(--accent-color);" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
                 Search
             </button>
         </form>
@@ -36,12 +37,12 @@
     <?php if($query): ?>
         <!-- Results Tabs -->
         <div class="mb-6">
-            <div class="border-b border-gray-200">
+            <div class="border-b theme-transition" style="border-color: var(--border-color);">
                 <nav class="-mb-px flex space-x-8">
-                    <button id="tweets-tab" class="tab-btn active py-2 px-1 border-b-2 border-blue-500 font-medium text-sm text-blue-600">
+                    <button id="tweets-tab" class="tab-btn active py-2 px-1 border-b-2 font-medium text-sm transition-colors" style="border-color: var(--accent-color); color: var(--accent-color);">
                         Tweets (<?php echo e($tweets->count()); ?>)
                     </button>
-                    <button id="users-tab" class="tab-btn py-2 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                    <button id="users-tab" class="tab-btn py-2 px-1 border-b-2 border-transparent font-medium text-sm transition-colors" style="color: var(--text-secondary);" onmouseover="this.style.color='var(--text-primary)'; this.style.borderColor='var(--border-color)'" onmouseout="this.style.color='var(--text-secondary)'; this.style.borderColor='transparent'">
                         Users (<?php echo e($users->count()); ?>)
                     </button>
                 </nav>
@@ -53,7 +54,7 @@
             <?php if($tweets->count() > 0): ?>
                 <div class="space-y-4">
                     <?php $__currentLoopData = $tweets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tweet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="bg-white rounded-lg shadow p-4">
+                        <div class="rounded-lg shadow p-4 theme-transition" style="background-color: var(--bg-secondary);">
                             <div class="flex items-start space-x-3">
                                 <!-- Profile Picture -->
                                 <div class="flex-shrink-0">
@@ -69,13 +70,13 @@
                                 <div class="flex-1 min-w-0">
                                     <!-- User Info -->
                                     <div class="flex items-center space-x-2 mb-2">
-                                        <a href="<?php echo e(route('profile.show', $tweet->user->id)); ?>" class="font-medium text-gray-900 hover:underline">
+                                        <a href="<?php echo e(route('profile.show', $tweet->user->id)); ?>" class="font-medium hover:underline theme-transition" style="color: var(--text-primary);">
                                             <?php echo e($tweet->user->name); ?>
 
                                         </a>
-                                        <span class="text-gray-500 text-sm"><?php echo e($tweet->time_ago); ?></span>
+                                        <span class="text-sm" style="color: var(--text-secondary);"><?php echo e($tweet->time_ago); ?></span>
                                         <?php if($tweet->is_edited): ?>
-                                            <span class="text-gray-400 text-xs">(edited)</span>
+                                            <span class="text-xs" style="color: var(--text-secondary); opacity: 0.7;">(edited)</span>
                                         <?php endif; ?>
                                         
                                         <!-- Privacy Indicator -->
@@ -99,10 +100,10 @@
                                     </div>
 
                                     <!-- Tweet Content -->
-                                    <div class="text-gray-800 mb-3">
+                                    <div class="mb-3 theme-transition" style="color: var(--text-primary);">
                                         <!-- Share indicator -->
                                         <?php if(isset($tweet->is_share) && $tweet->is_share): ?>
-                                            <div class="flex items-center text-gray-500 text-sm mb-3">
+                                            <div class="flex items-center text-sm mb-3" style="color: var(--text-secondary);">
                                                 <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
                                                     <path d="M23.77 15.67c-.292-.293-.767-.293-1.06 0l-2.22 2.22V7.65c0-2.068-1.683-3.75-3.75-3.75h-5.85c-.414 0-.75.336-.75.75s.336.75.75.75h5.85c1.24 0 2.25 1.01 2.25 2.25v10.24l-2.22-2.22c-.293-.293-.768-.293-1.061 0s-.293.768 0 1.061l3.5 3.5c.145.147.337.22.53.22s.385-.073.53-.22l3.5-3.5c.294-.292.294-.767.001-1.06zM10.75 20.25H4.9c-1.24 0-2.25-1.01-2.25-2.25V7.65l2.22 2.22c.148.147.34.22.532.22s.384-.073.53-.22c.293-.293.293-.768 0-1.061l-3.5-3.5c-.293-.293-.768-.293-1.061 0l-3.5 3.5c-.294.292-.294.767 0 1.06s.767.294 1.06 0l2.22-2.22V18c0 2.068 1.683 3.75 3.75 3.75h5.85c.414 0 .75-.336.75-.75s-.336-.75-.75-.75z"/>
                                                 </svg>
@@ -111,11 +112,11 @@
                                             
                                             <!-- User's comment on share -->
                                             <?php if(!empty($tweet->content)): ?>
-                                                <p class="text-gray-900 text-base leading-relaxed mb-3"><?php echo e($tweet->content); ?></p>
+                                                <p class="text-base leading-relaxed mb-3" style="color: var(--text-primary);"><?php echo e($tweet->content); ?></p>
                                             <?php endif; ?>
                                             
                                             <!-- Original shared tweet -->
-                                            <div class="border border-gray-200 rounded-lg p-3 bg-gray-50">
+                                            <div class="border rounded-lg p-3 theme-transition" style="border-color: var(--border-color); background-color: var(--bg-primary);">
                                                 <div class="flex items-start space-x-2 mb-2">
                                                     <div class="flex-shrink-0">
                                                         <?php if($tweet->shared_tweet['user']['profile_picture'] ?? false): ?>
@@ -132,11 +133,11 @@
                                                         <?php endif; ?>
                                                     </div>
                                                     <div>
-                                                        <p class="font-medium text-gray-900 text-sm"><?php echo e($tweet->shared_tweet['user']['name']); ?></p>
-                                                        <p class="text-xs text-gray-500"><?php echo e(\Carbon\Carbon::parse($tweet->shared_tweet['created_at'])->diffForHumans()); ?></p>
+                                                        <p class="font-medium text-sm" style="color: var(--text-primary);"><?php echo e($tweet->shared_tweet['user']['name']); ?></p>
+                                                        <p class="text-xs" style="color: var(--text-secondary);"><?php echo e(\Carbon\Carbon::parse($tweet->shared_tweet['created_at'])->diffForHumans()); ?></p>
                                                     </div>
                                                 </div>
-                                                <p class="text-gray-800 text-sm"><?php echo e($tweet->shared_tweet['content']); ?></p>
+                                                <p class="text-sm" style="color: var(--text-primary);"><?php echo e($tweet->shared_tweet['content']); ?></p>
                                             </div>
                                         <?php else: ?>
                                             <?php echo e($tweet->content); ?>
@@ -184,7 +185,7 @@
                                     </div>
 
                                     <!-- Tweet Actions -->
-                                    <div class="flex items-center space-x-4 text-gray-500">
+                                    <div class="flex items-center space-x-4" style="color: var(--text-secondary);">
                                         <!-- Like Button -->
                                         <?php if($isAuth): ?>
                                             <button 
@@ -209,7 +210,7 @@
                                         <?php if($isAuth && !isset($tweet->is_share) && $authUser && (is_array($authUser) ? $authUser['id'] : $authUser->id) != $tweet->user->id): ?>
                                             <button 
                                                 onclick="shareTweet(<?php echo e($tweet->id); ?>)"
-                                                class="flex items-center space-x-1 text-gray-400 hover:text-green-500 transition-colors duration-200"
+                                                class="flex items-center space-x-1 hover:text-green-500 transition-colors duration-200"
                                                 title="Share Tweet"
                                             >
                                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -239,11 +240,11 @@
                 </div>
             <?php else: ?>
                 <div class="text-center py-8">
-                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="mx-auto h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--text-secondary);">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                     </svg>
-                    <h3 class="mt-2 text-sm font-medium text-gray-900">No tweets found</h3>
-                    <p class="mt-1 text-sm text-gray-500">No tweets match your search query.</p>
+                    <h3 class="mt-2 text-sm font-medium" style="color: var(--text-primary);">No tweets found</h3>
+                    <p class="mt-1 text-sm" style="color: var(--text-secondary);">No tweets match your search query.</p>
                 </div>
             <?php endif; ?>
         </div>
@@ -253,7 +254,7 @@
             <?php if($users->count() > 0): ?>
                 <div class="space-y-4">
                     <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="bg-white rounded-lg shadow p-4">
+                        <div class="rounded-lg shadow p-4 theme-transition" style="background-color: var(--bg-secondary);">
                             <div class="flex items-center space-x-4">
                                 <!-- Profile Picture -->
                                 <div class="flex-shrink-0">
@@ -268,8 +269,8 @@
 
                                 <div class="flex-1">
                                     <a href="<?php echo e(route('profile.show', $user->id)); ?>" class="block">
-                                        <h3 class="font-medium text-gray-900 hover:underline"><?php echo e($user->name); ?></h3>
-                                        <p class="text-gray-500 text-sm"><?php echo e($user->email); ?></p>
+                                        <h3 class="font-medium hover:underline theme-transition" style="color: var(--text-primary);"><?php echo e($user->name); ?></h3>
+                                        <p class="text-sm" style="color: var(--text-secondary);"><?php echo e($user->email); ?></p>
                                     </a>
                                 </div>
 
@@ -284,21 +285,21 @@
                 </div>
             <?php else: ?>
                 <div class="text-center py-8">
-                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="mx-auto h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--text-secondary);">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
-                    <h3 class="mt-2 text-sm font-medium text-gray-900">No users found</h3>
-                    <p class="mt-1 text-sm text-gray-500">No users match your search query.</p>
+                    <h3 class="mt-2 text-sm font-medium" style="color: var(--text-primary);">No users found</h3>
+                    <p class="mt-1 text-sm" style="color: var(--text-secondary);">No users match your search query.</p>
                 </div>
             <?php endif; ?>
         </div>
     <?php else: ?>
         <div class="text-center py-12">
-            <svg class="mx-auto h-16 w-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="mx-auto h-16 w-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--text-secondary);">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"></path>
             </svg>
-            <h3 class="mt-2 text-lg font-medium text-gray-900">Start Searching</h3>
-            <p class="mt-1 text-gray-500">Enter a search term above to find tweets and users.</p>
+            <h3 class="mt-2 text-lg font-medium" style="color: var(--text-primary);">Start Searching</h3>
+            <p class="mt-1" style="color: var(--text-secondary);">Enter a search term above to find tweets and users.</p>
         </div>
     <?php endif; ?>
 </div>

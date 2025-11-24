@@ -1,11 +1,11 @@
 
 
 <?php $__env->startSection('content'); ?>
-    <div class="max-w-md mx-auto bg-white rounded-lg shadow p-6">
+    <div class="max-w-md mx-auto rounded-lg shadow p-6 theme-transition" style="background-color: var(--bg-secondary);">
         <div class="text-center mb-6">
-            <i class="fas fa-kiwi-bird text-blue-500 text-4xl mb-4"></i>
-            <h2 class="text-2xl font-bold text-gray-900">Join Munchkly</h2>
-            <p class="text-gray-600 mt-2">Create your account and start sharing your thoughts</p>
+            <i class="fas fa-kiwi-bird text-4xl mb-4" style="color: var(--accent-color);"></i>
+            <h2 class="text-2xl font-bold" style="color: var(--text-primary);">Join Munchkly</h2>
+            <p class="mt-2" style="color: var(--text-secondary);">Create your account and start sharing your thoughts</p>
         </div>
 
         <form method="POST" action="<?php echo e(route('register')); ?>" class="space-y-4">
@@ -13,7 +13,7 @@
 
             <!-- Name -->
             <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                <label for="name" class="block text-sm font-medium mb-1" style="color: var(--text-primary);">Full Name</label>
                 <input 
                     id="name" 
                     name="name" 
@@ -21,7 +21,7 @@
                     value="<?php echo e(old('name')); ?>"
                     required 
                     autocomplete="name"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 <?php $__errorArgs = ['name'];
+                    class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 theme-transition <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -29,6 +29,7 @@ $message = $__bag->first($__errorArgs[0]); ?> border-red-500 <?php unset($messag
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
+                    style="background-color: var(--bg-primary); color: var(--text-primary); border-color: var(--border-color); --tw-ring-color: var(--accent-color);"
                     placeholder="Enter your full name"
                 >
                 <?php $__errorArgs = ['name'];
@@ -45,7 +46,7 @@ unset($__errorArgs, $__bag); ?>
 
             <!-- Email -->
             <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                <label for="email" class="block text-sm font-medium mb-1" style="color: var(--text-primary);">Email Address</label>
                 <input 
                     id="email" 
                     name="email" 
@@ -53,7 +54,7 @@ unset($__errorArgs, $__bag); ?>
                     value="<?php echo e(old('email')); ?>"
                     required 
                     autocomplete="email"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 <?php $__errorArgs = ['email'];
+                    class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 theme-transition <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -61,6 +62,7 @@ $message = $__bag->first($__errorArgs[0]); ?> border-red-500 <?php unset($messag
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
+                    style="background-color: var(--bg-primary); color: var(--text-primary); border-color: var(--border-color); --tw-ring-color: var(--accent-color);"
                     placeholder="Enter your email address"
                 >
                 <?php $__errorArgs = ['email'];
@@ -77,14 +79,14 @@ unset($__errorArgs, $__bag); ?>
 
             <!-- Password -->
             <div>
-                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <label for="password" class="block text-sm font-medium mb-1" style="color: var(--text-primary);">Password</label>
                 <input 
                     id="password" 
                     name="password" 
                     type="password" 
                     required 
                     autocomplete="new-password"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 <?php $__errorArgs = ['password'];
+                    class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 theme-transition <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -92,6 +94,7 @@ $message = $__bag->first($__errorArgs[0]); ?> border-red-500 <?php unset($messag
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
+                    style="background-color: var(--bg-primary); color: var(--text-primary); border-color: var(--border-color); --tw-ring-color: var(--accent-color);"
                     placeholder="Enter your password (min. 8 characters)"
                 >
                 <?php $__errorArgs = ['password'];
@@ -108,14 +111,15 @@ unset($__errorArgs, $__bag); ?>
 
             <!-- Confirm Password -->
             <div>
-                <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                <label for="password_confirmation" class="block text-sm font-medium mb-1" style="color: var(--text-primary);">Confirm Password</label>
                 <input 
                     id="password_confirmation" 
                     name="password_confirmation" 
                     type="password" 
                     required 
                     autocomplete="new-password"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 theme-transition"
+                    style="background-color: var(--bg-primary); color: var(--text-primary); border-color: var(--border-color); --tw-ring-color: var(--accent-color);"
                     placeholder="Confirm your password"
                 >
             </div>
@@ -124,7 +128,10 @@ unset($__errorArgs, $__bag); ?>
             <div class="pt-4">
                 <button 
                     type="submit" 
-                    class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200"
+                    class="w-full text-white font-medium py-2 px-4 rounded-md transition-colors duration-200"
+                    style="background-color: var(--accent-color);"
+                    onmouseover="this.style.opacity='0.9'"
+                    onmouseout="this.style.opacity='1'"
                 >
                     <i class="fas fa-user-plus mr-2"></i>Create Account
                 </button>
@@ -133,9 +140,9 @@ unset($__errorArgs, $__bag); ?>
 
         <!-- Login Link -->
         <div class="mt-6 text-center">
-            <p class="text-sm text-gray-600">
+            <p class="text-sm" style="color: var(--text-secondary);">
                 Already have an account? 
-                <a href="<?php echo e(route('login')); ?>" class="text-blue-500 hover:text-blue-600 font-medium">Sign in here</a>
+                <a href="<?php echo e(route('login')); ?>" class="font-medium transition-colors" style="color: var(--accent-color);" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Sign in here</a>
             </p>
         </div>
     </div>

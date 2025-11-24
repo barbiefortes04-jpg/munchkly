@@ -26,5 +26,14 @@
         "email": "nettiemabangisa@gmail.com",
         "password": "$2y$12$h9ZUoxWaaeVzsxc4gnR0l.ac9B8v34CIs5sJuFxN4\/JVA4OXOX9Ry",
         "created_at": "2025-11-22T17:57:46.179901Z"
+    },
+    {
+        "id": 5,
+        "name": "tabita8080",
+        "email": "tabita8080@gmail.com",
+        "password": "$2y$12$3J5eAVKdYiBkorkBTaCjt.OqNEEWCGbzwUh4zeLCvcQmoSxfgvS6m",
+        "created_at": "2025-11-24T13:32:54.281322Z",
+        "profile_picture": "1763991195_5.jpg",
+        "cover_photo": "cover_1763991202_5.jpg"
     }
 ]
