@@ -159,19 +159,32 @@ php artisan db:seed
 ## Screenshots
 
 ### Homepage - Feed View
-*Clean, responsive design showing all tweets with like buttons and user interactions*
+![Homepage Feed](screenshots/homepage-feed.png)
+*Clean, responsive design showing recent tweets with user interactions, posting interface, and search functionality*
+
+### Search Functionality  
+![Search Results](screenshots/search-results.png)
+*Powerful search feature allowing users to find tweets and users with real-time results*
+
+### Welcome/Landing Page
+![Welcome Page](screenshots/welcome-page.png)
+*Professional landing page showcasing the platform's key features and value proposition*
 
 ### User Registration
-*Simple, intuitive registration form with validation*
+![User Registration](screenshots/user-registration.png)
+*Simple, intuitive registration form with comprehensive validation and user-friendly interface*
 
-### User Profile
-*Comprehensive profile page with user statistics and tweet history*
+### User Login
+![User Login](screenshots/user-login.png)
+*Secure login interface with "Remember Me" functionality and easy account recovery*
 
-### Tweet Creation
-*Real-time character counter and posting interface*
-
-### Mobile Responsive
-*Perfectly optimized for all device sizes*
+### Key Features Demonstrated:
+- **Dark/Light Theme Toggle**: Seamless theme switching for user preference
+- **Responsive Design**: Perfect display across all device sizes
+- **Real-time Interactions**: Instant feedback for likes, shares, and posting
+- **Search Functionality**: Advanced search with tweet and user filtering
+- **Clean UI/UX**: Professional, Twitter-inspired interface design
+- **Secure Authentication**: Comprehensive login/registration system
 
 ## Running the Application
 
