@@ -159,27 +159,27 @@ php artisan db:seed
 ## Screenshots
 
 ### Homepage - Feed View
-![Homepage Feed](screenshots/homepage-feed.png.png)
+![Homepage Feed](screenshots/homepage-feed.png)
 *Clean, responsive design showing recent tweets with user interactions, posting interface, and search functionality*
 
 ### Search Functionality  
-![Search Results](screenshots/search-results.png.png)
+![Search Results](screenshots/search-results.png)
 *Powerful search feature allowing users to find tweets and users with real-time results*
 
 ### Welcome/Landing Page
-![Welcome Page](screenshots/welcome-page.png.png)
+![Welcome Page](screenshots/welcome-page.png)
 *Professional landing page showcasing the platform's key features and value proposition*
 
 ### User Registration
-![User Registration](screenshots/user-registration.png.png)
+![User Registration](screenshots/user-registration.png)
 *Simple, intuitive registration form with comprehensive validation and user-friendly interface*
 
 ### User Login
-![User Login](screenshots/user-login.png.png)
+![User Login](screenshots/user-login.png)
 *Secure login interface with "Remember Me" functionality and easy account recovery*
 
 ### User Profile
-![User Profile](screenshots/user-profile.png.png)
+![User Profile](screenshots/user-profile.png)
 *Comprehensive user profile page displaying user information and activity*
 
 ### Key Features Demonstrated:
